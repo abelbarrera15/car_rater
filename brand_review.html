@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <style>
+    .brand_form {
+      text-align: center;
+    }
+  </style>
+  <head>
+    <title>Car Rating Application</title>
+    <!-- Latest compiled CSS v3.4.1 -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <!-- jQuery library v3.5.1-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery cookie library v1.4.1-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- Latest compiled JavaScript v3.4.1 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <main></main>
+    <div class="brand_form" id="disp">
+      <br />
+      <br />
+      <h4>Submit your brand review!</h4>
+      <br />
+      <br />
+      <form action="brand_review_submit.php" method="POST">
+        Rating:<br />
+        <input type="number" name="rating" min="0" max="10" required />
+        <br />
+        Review Title:<br />
+        <input type="text" name="title" required />
+        <br />
+        Review Commentary:<br />
+        <input type="text" name="comment" required />
+        <br />
+        <br />
+        <input type="hidden" id="brand_id" name="brand_id" value="" />
+        <input type="hidden" id="rating_id" name="rating_id" value="" />
+        <input type="submit" name="submit" />
+      </form>
+    </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get("id");
+      document.getElementById("brand_id").value = myParam;
+      document.getElementById("rating_id").value = $.cookie("user_name");
+      var dispHTML = document.getElementById("disp");
+      if ($.cookie("user_name") == undefined) {
+        dispHTML.innerHTML =
+          "<h1> YOU DO NOT HAVE ACCESS TO THIS RESOURCE! FORBIDDEN/<h1>";
+      }
+    </script>
+  </body>
+</html>
