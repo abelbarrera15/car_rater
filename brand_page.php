@@ -30,16 +30,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Latest compiled JavaScript v3.4.1 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- Cookie Lib v1.4.1 -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script> -->
+    <!-- Ajax library v3.5.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <main></main>
-    <div class="header">
+    <div class="header" id="header">
       <h1> What car brand do you want to review or know more about? </h1>
       </br>
       </br>
+      <a href="https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/new_brand.html"> <h4>Add New Brand</h4> </a>
       </br>
       </br>
     </div>
@@ -51,12 +51,11 @@
 	
 	include 'db_connection.php';
 
-  // add the check if the token is here if not 404 part to the beginning of every code file here
-
   session_start() ;
 
   if (!isset($_COOKIE['user_name'])) {
     header("HTTP/1.0 404 Not Found");
+    echo '<script type="text/javascript">var temp = document.getElementById("header"); temp.innerHTML = ""; </script>';
     echo '<h1>This page was not found</h1>';
     echo '<h1>You do not have access. Please login</h1>';
     die();
@@ -103,14 +102,12 @@
               temp_html = temp_html + "</div>"
             }
           )
-          temp_html = temp_html + "</div>"
+          temp_html = temp_html + "</div> </br> </br>" 
           brandHTML.innerHTML = ""
           brandHTML.innerHTML += temp_html
         }
       }
-
-      //need to add top right button on "header" div to "add" brand which redirects to a form which lets you add brand
-
+      
       main();
 </script>
 
