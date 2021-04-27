@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <style>
+    .part_form {
+      text-align: center;
+    }
+  </style>
+  <head>
+    <title>Car Rating Application</title>
+    <!-- Latest compiled CSS v3.4.1 -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <!-- jQuery library v3.5.1-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery cookie library v1.4.1-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- Latest compiled JavaScript v3.4.1 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <main></main>
+    <div class="part_form" id="disp">
+      <br />
+      <br />
+      <h4>Submit your new part!</h4>
+      <br />
+      <br />
+      <form action="new_part_submit.php" method="POST">
+        Part Name:<br />
+        <input type="text" name="part_name" required />
+        <br />
+        Part Description:<br />
+        <input type="text" name="part_desc" required />
+        <br />
+        Part Logo (png only):<br />
+        <input
+          style="margin-left: 45%; margin-right: 45%"
+          type="file"
+          name="part_img"
+          id="part_img"
+          accept=".png"
+          required
+        />
+        <br />
+        <br />
+        <input type="hidden" id="car_id" name="car_id" value="" />
+        <input type="hidden" id="base64_img" name="base64_img" value="" />
+        <input type="submit" name="submit" />
+      </form>
+    </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const car_id = urlParams.get("car_id");
+      file_input = document.getElementById("part_img");
+      file_input.onchange = () => {
+        var reader = new FileReader();
+        const file = document.querySelector("#part_img").files[0];
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          document.getElementById("base64_img").value = reader.result.substring(
+            22,
+            reader.result.length
+          );
+          document.getElementById("car_id").value = car_id;
+        };
+      };
+      var dispHTML = document.getElementById("disp");
+      if ($.cookie("user_name") == undefined) {
+        dispHTML.innerHTML =
+          "<h1> YOU DO NOT HAVE ACCESS TO THIS RESOURCE! FORBIDDEN<h1>";
+      }
+    </script>
+  </body>
+</html>
