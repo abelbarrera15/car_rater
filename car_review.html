@@ -49,9 +49,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       let myParam = urlParams.get("id");
       document.getElementById("car_id").value = myParam;
-      console.log(myParam);
       myParam = urlParams.get("brand_id");
-      console.log(myParam);
       document.getElementById("brand_id").value = myParam;
       document.getElementById("rating_id").value = $.cookie("user_name");
       var dispHTML = document.getElementById("disp");
