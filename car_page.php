@@ -39,7 +39,7 @@
       <h1> What car do you want to review or know more about? </h1>
       </br>
       </br>
-      <a href="https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/new_car.html"> <h4>Add New Car</h4> </a>
+      <a href="https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/new_car.html" id = "new_car"> <h4>Add New Car</h4> </a>
       </br>
       </br>
     </div>
@@ -79,8 +79,11 @@
 
 <script>
       function main() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const brand_id = urlParams.get('id');
         let carData = <?php echo $_SESSION['car_data'];?>;
         var carHTML = document.getElementById("car_info");
+        document.getElementById("new_car").href="https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/new_car.html?brand_id=" + brand_id
         let row_nums = carData.length / 3
         if (parseInt(carData.length / 3) != row_nums){
           row_nums = parseInt(carData.length / 3) + 1

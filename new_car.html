@@ -2,7 +2,7 @@
 <html lang="en">
   <meta charset="utf-8" />
   <style>
-    .brand_form {
+    .car_form {
       text-align: center;
     }
   </style>
@@ -22,47 +22,52 @@
   </head>
   <body>
     <main></main>
-    <div class="brand_form" id="disp">
+    <div class="car_form" id="disp">
       <br />
       <br />
-      <h4>Submit your new brand!</h4>
+      <h4>Submit your new car!</h4>
       <br />
       <br />
       <form action="new_car_submit.php" method="POST">
-        Brand Name:<br />
-        <input type="text" name="brand_name" required />
+        Car Name:<br />
+        <input type="text" name="car_name" required />
         <br />
-        Brand Description:<br />
-        <input type="text" name="brand_desc" required />
+        Car Description:<br />
+        <input type="text" name="car_desc" required />
         <br />
-        Brand Logo (png only):<br />
+        Car Logo (png only):<br />
         <input
           style="margin-left: 45%; margin-right: 45%"
           type="file"
-          name="brand_img"
-          id="brand_img"
+          name="car_img"
+          id="car_img"
           accept=".png"
           required
         />
         <br />
         <br />
+        <input type="hidden" id="brand_id" name="brand_id" value="" />
         <input type="hidden" id="base64_img" name="base64_img" value="" />
         <input type="submit" name="submit" />
       </form>
     </div>
     <script>
-      file_input = document.getElementById("brand_img");
+      const urlParams = new URLSearchParams(window.location.search);
+      const brand_id = urlParams.get("brand_id");
+      file_input = document.getElementById("car_img");
       file_input.onchange = () => {
         var reader = new FileReader();
-        const file = document.querySelector("#brand_img").files[0];
+        const file = document.querySelector("#car_img").files[0];
         reader.readAsDataURL(file);
         reader.onload = function () {
           document.getElementById("base64_img").value = reader.result.substring(
             22,
             reader.result.length
           );
+          document.getElementById("brand_id").value = brand_id;
         };
       };
+      //need to add brand id here so that I can return on new_car_submit to page
       var dispHTML = document.getElementById("disp");
       if ($.cookie("user_name") == undefined) {
         dispHTML.innerHTML =
