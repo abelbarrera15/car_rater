@@ -60,8 +60,7 @@
   }
 
     $brand_id = $_GET["id"];
-
-	$sql = "SELECT Car_Id, Car_Name, Car_Description, Car_img FROM CAR WHERE Brand_Id = cast('$brand_id' as int)";
+	$sql = "SELECT Car_Id, Brand_Id, Car_Name, Car_Description, Car_img FROM CAR WHERE Brand_Id = cast('$brand_id' as int)";
 	$result = mysqli_query($conn, $sql);
     $carArray = array();
 	if (mysqli_num_rows($result) > 0) {
@@ -72,10 +71,9 @@
         mysqli_close($conn);
 	}
 	else {
-		$msg = "Something's gone wrong! Please try again";
+		$msg = "This brand has no cars. Choose another brand or add a car";
+        mysqli_close($conn);
 		echo '<script type="text/javascript">alert("' . $msg . '")</script>';
-		mysqli_close($conn);
-    header("Location: /~abbarrer/final_proj/index.html");
 	}
 ?>
 
@@ -96,10 +94,10 @@
               temp_html = temp_html + "<img style='width:150px;height:150px;' src=data:image/png;base64," + data.Car_img + " onclick=" + temp_var + "></img>"
               temp_html = temp_html + "</br>" + data.Car_Name
               temp_html = temp_html + "</br></br>"
-              temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/car_review.html?id=" + data.Car_Id + "'"
+              temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/car_review.html?id=" + data.Car_Id + "&brand_id=" + data.Brand_Id + "'"
               temp_html = temp_html + "<button onclick=" + temp_var + " type='button'>Review</button>"
               temp_html = temp_html + "</br></br>"
-              temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/car_reviews.php?id=" + data.Car_Id + "'"
+              temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/car_reviews.php?id=" + data.Car_Id + "&brand_id=" + data.Brand_Id + "'"
               temp_html = temp_html + "<button onclick=" + temp_var + " type='button'>See Reviews</button>"
               temp_html = temp_html + "</div>"
             }
