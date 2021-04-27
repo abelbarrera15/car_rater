@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <style>
+    .instructions {
+      text-align: center;
+    }
+    .register {
+      text-align: center;
+    }
+  </style>
+  <head>
+    <title>Pothole Management System</title>
+    <!-- Latest compiled CSS v3.4.1 -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <!-- jQuery library v3.5.1-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript v3.4.1 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="instructions">
+        <br />
+        <h3>Please Register Below!</h3>
+      </div>
+    </main>
+    <div class="register">
+      <form action="register.php" method="POST">
+        User Name:<br />
+        <input type="text" name="UserName" required />
+        <br />
+        Password:<br />
+        <input type="text" name="Password" required />
+        <br /><br />
+        <input type="submit" name="submit" />
+      </form>
+    </div>
+    <script></script>
+  </body>
+</html>
