@@ -92,7 +92,8 @@
           temp_html = temp_html + "<div class='row'>"
           brandData.slice(((i*3) - 3),(i*3)).forEach( function (data) {
               temp_html = temp_html + "<div class='col-md-4'>"
-              temp_html = temp_html + "<img style='width:150px;height:150px;' src=data:image/png;base64," + data.Brand_Img + "></img>"
+              temp_var = "javascript:window.location='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/car_page.php?id=" + data.Brand_Id + "';"
+              temp_html = temp_html + "<img style='width:150px;height:150px;' src=data:image/png;base64," + data.Brand_Img + " onclick=" + temp_var + "></img>"
               temp_html = temp_html + "</br></br>"
               temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/brand_review.html?id=" + data.Brand_Id + "'"
               temp_html = temp_html + "<button onclick=" + temp_var + " type='button'>Review</button>"
