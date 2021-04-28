@@ -95,7 +95,8 @@
               temp_html = temp_html + "<div class='col-md-4'>"
               temp_var = "javascript:window.location='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/part_page.php?id=" + data.Car_Id + "';"
               temp_html = temp_html + "<img style='width:150px;height:150px;' src=data:image/png;base64," + data.Car_img + " onclick=" + temp_var + "></img>"
-              temp_html = temp_html + "</br>" + data.Car_Name
+              temp_html = temp_html + "</br><b>" + data.Car_Name + "</b>"
+              temp_html = temp_html + "</br>" + data.Car_Description
               temp_html = temp_html + "</br></br>"
               temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/car_review.html?id=" + data.Car_Id + "&brand_id=" + data.Brand_Id + "'"
               temp_html = temp_html + "<button onclick=" + temp_var + " type='button'>Review</button>"

@@ -94,7 +94,8 @@
           partData.slice(((i*3) - 3),(i*3)).forEach( function (data) {
               temp_html = temp_html + "<div class='col-md-4'>"
               temp_html = temp_html + "<img style='width:150px;height:150px;' src=data:image/png;base64," + data.Part_Img + "></img>"
-              temp_html = temp_html + "</br>" + data.Part_Name
+              temp_html = temp_html + "</br><b>" + data.Part_Name + "</b>"
+              temp_html = temp_html + "</br>" + data.Part_Description
               temp_html = temp_html + "</br></br>"
               temp_var = "location.href='https://in-info-web4.informatics.iupui.edu/~abbarrer/final_proj/part_review.html?id=" + data.Part_Id + "&car_id=" + data.Car_Id + "'"
               temp_html = temp_html + "<button onclick=" + temp_var + " type='button'>Review</button>"
